@@ -13,6 +13,7 @@ var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var forms_1 = require('@angular/forms');
 var http_1 = require('@angular/http');
+var common_1 = require('@angular/common');
 // Imports for loading & configuring the in-memory web api
 var angular_in_memory_web_api_1 = require('angular-in-memory-web-api');
 var in_memory_data_service_1 = require('./in-memory-data.service');
@@ -43,6 +44,7 @@ var AppModule = (function () {
                 hero_search_component_1.HeroSearchComponent
             ],
             providers: [
+                { provide: common_1.LocationStrategy, useClass: common_1.HashLocationStrategy },
                 hero_service_1.HeroService
             ],
             bootstrap: [app_component_1.AppComponent]

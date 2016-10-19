@@ -17,7 +17,9 @@ var AppComponent = (function () {
         core_1.Component({
             selector: 'my-app',
             template: "\n    <h1>{{title}}</h1>\n    <nav>\n        <a routerLink=\"/dashboard\" routerLinkActive=\"active\">Dashboard</a>\n        <a routerLink=\"/heroes\" routerLinkActive=\"active\">Heroes</a>\n    </nav>\n    <router-outlet></router-outlet>\n  ",
-            styleUrls: ['app/app.component.css'],
+            styles: [
+                "h1 { font-size: 1.2em; color: #999; margin-bottom: 0; }\n     h2 { font-size: 2em; margin-top: 0; padding-top: 0; }\n     nav a { padding: 5px 10px; text-decoration: none; margin-top: 10px; display: inline-block; background-color: #eee; border-radius: 4px; }\n     nav a:visited, a:link { color: #607D8B; }\n     nav a:hover { color: #039be5; background-color: #CFD8DC; }\n     nav a.active { color: #039be5;}\n    "
+            ],
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
