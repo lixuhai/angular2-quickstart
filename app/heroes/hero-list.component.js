@@ -11,25 +11,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var hero_service_1 = require('./hero.service');
-var HeroesComponent = (function () {
-    function HeroesComponent(router, heroService) {
+var HeroListComponent = (function () {
+    function HeroListComponent(router, heroService) {
         this.router = router;
         this.heroService = heroService;
     }
-    HeroesComponent.prototype.getHeroes = function () {
+    HeroListComponent.prototype.getHeroes = function () {
         var _this = this;
         this.heroService.getHeroes().then(function (heroes) { return _this.heroes = heroes; });
     };
-    HeroesComponent.prototype.ngOnInit = function () {
+    HeroListComponent.prototype.ngOnInit = function () {
         this.getHeroes();
     };
-    HeroesComponent.prototype.onSelect = function (hero) {
+    HeroListComponent.prototype.onSelect = function (hero) {
         this.selectedHero = hero;
     };
-    HeroesComponent.prototype.gotoDetail = function () {
-        this.router.navigate(['/detail', this.selectedHero.id]);
+    HeroListComponent.prototype.gotoDetail = function () {
+        this.router.navigate(['/hero', this.selectedHero.id]);
     };
-    HeroesComponent.prototype.add = function (name) {
+    HeroListComponent.prototype.add = function (name) {
         var _this = this;
         name = name.trim();
         if (!name) {
@@ -41,7 +41,7 @@ var HeroesComponent = (function () {
             _this.selectedHero = null;
         });
     };
-    HeroesComponent.prototype.delete = function (hero) {
+    HeroListComponent.prototype.delete = function (hero) {
         var _this = this;
         this.heroService
             .delete(hero.id)
@@ -52,16 +52,35 @@ var HeroesComponent = (function () {
             }
         });
     };
-    HeroesComponent = __decorate([
+    HeroListComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             selector: 'my-heroes',
-            templateUrl: 'heroes.component.html',
-            styleUrls: ['heroes.component.css']
+            templateUrl: 'hero-list.component.html',
+            styleUrls: ['hero-list.component.css'],
+            animations: [
+                core_1.trigger('flyInOut', [
+                    core_1.state('in', core_1.style({ transform: 'translateX(0)' })),
+                    core_1.transition('void => *', [
+                        core_1.animate(400, core_1.keyframes([
+                            core_1.style({ opacity: 0, transform: 'translateX(-100%)', offset: 0 }),
+                            core_1.style({ opacity: 1, transform: 'translateX(15px)', offset: 0.3 }),
+                            core_1.style({ opacity: 1, transform: 'translateX(0)', offset: 1.0 })
+                        ]))
+                    ]),
+                    core_1.transition('* => void', [
+                        core_1.animate(400, core_1.keyframes([
+                            core_1.style({ opacity: 1, transform: 'translateX(0)', offset: 0 }),
+                            core_1.style({ opacity: 1, transform: 'translateX(-15px)', offset: 0.7 }),
+                            core_1.style({ opacity: 0, transform: 'translateX(100%)', offset: 1.0 })
+                        ]))
+                    ])
+                ])
+            ]
         }), 
         __metadata('design:paramtypes', [router_1.Router, hero_service_1.HeroService])
-    ], HeroesComponent);
-    return HeroesComponent;
+    ], HeroListComponent);
+    return HeroListComponent;
 }());
-exports.HeroesComponent = HeroesComponent;
-//# sourceMappingURL=heroes.component.js.map
+exports.HeroListComponent = HeroListComponent;
+//# sourceMappingURL=hero-list.component.js.map

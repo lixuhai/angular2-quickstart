@@ -9,13 +9,11 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 // Imports for loading & configuring the in-memory web api
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './in-memory-data.service';
-
 import { AppComponent } from './app.component';
-import { HeroService } from './hero.service';
-import { HeroesComponent }     from './heroes.component';
-import { HeroDetailComponent } from './hero-detail.component';
+import { HeroesModule } from './heroes/heroes.module';
+import { HeroSearchComponent } from './hero-search.component'
 import { DashboardComponent } from './dashboard.component';
-import { HeroSearchComponent } from './hero-search.component';
+
 import { routing } from './app.routing';
 
 @NgModule({
@@ -24,20 +22,18 @@ import { routing } from './app.routing';
     FormsModule,
     HttpModule,
     InMemoryWebApiModule.forRoot(InMemoryDataService),
+    HeroesModule,
     routing
   ],
 
   declarations: [
     AppComponent,
-    DashboardComponent,
-    HeroDetailComponent,
-    HeroesComponent,
-    HeroSearchComponent
+    HeroSearchComponent,
+    DashboardComponent
   ],
 
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy },
-    HeroService
   ],
 
   bootstrap: [ AppComponent ]

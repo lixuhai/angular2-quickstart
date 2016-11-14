@@ -18,11 +18,9 @@ var common_1 = require('@angular/common');
 var angular_in_memory_web_api_1 = require('angular-in-memory-web-api');
 var in_memory_data_service_1 = require('./in-memory-data.service');
 var app_component_1 = require('./app.component');
-var hero_service_1 = require('./hero.service');
-var heroes_component_1 = require('./heroes.component');
-var hero_detail_component_1 = require('./hero-detail.component');
-var dashboard_component_1 = require('./dashboard.component');
+var heroes_module_1 = require('./heroes/heroes.module');
 var hero_search_component_1 = require('./hero-search.component');
+var dashboard_component_1 = require('./dashboard.component');
 var app_routing_1 = require('./app.routing');
 var AppModule = (function () {
     function AppModule() {
@@ -34,18 +32,16 @@ var AppModule = (function () {
                 forms_1.FormsModule,
                 http_1.HttpModule,
                 angular_in_memory_web_api_1.InMemoryWebApiModule.forRoot(in_memory_data_service_1.InMemoryDataService),
+                heroes_module_1.HeroesModule,
                 app_routing_1.routing
             ],
             declarations: [
                 app_component_1.AppComponent,
-                dashboard_component_1.DashboardComponent,
-                hero_detail_component_1.HeroDetailComponent,
-                heroes_component_1.HeroesComponent,
-                hero_search_component_1.HeroSearchComponent
+                hero_search_component_1.HeroSearchComponent,
+                dashboard_component_1.DashboardComponent
             ],
             providers: [
                 { provide: common_1.LocationStrategy, useClass: common_1.HashLocationStrategy },
-                hero_service_1.HeroService
             ],
             bootstrap: [app_component_1.AppComponent]
         }), 

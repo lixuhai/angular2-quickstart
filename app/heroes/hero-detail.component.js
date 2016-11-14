@@ -20,10 +20,8 @@ var HeroDetailComponent = (function () {
     }
     HeroDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.route.params.forEach(function (params) {
-            var id = +params['id'];
-            _this.heroService.getHero(id).then(function (hero) { return _this.hero = hero; });
-        });
+        var id = +this.route.snapshot.params['id'];
+        this.heroService.getHero(id).then(function (hero) { return _this.hero = hero; });
     };
     HeroDetailComponent.prototype.goBack = function () {
         this.location.back();
